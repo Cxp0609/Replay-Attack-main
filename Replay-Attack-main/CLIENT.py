@@ -70,6 +70,8 @@ def load_local_db():
 
 # === Local DB Comparison supporting multi-FE DB ===
 def compare_with_local_db(fv, db, threshold=0.85, fe_index=None):
+    best_uid = None
+    best_sim = 0.0
     for entry in db:
         # Check if multi-FE vectors exist
         feature_vectors = entry.get("feature_vectors", None)
@@ -84,8 +86,11 @@ def compare_with_local_db(fv, db, threshold=0.85, fe_index=None):
             continue
 
         sim = cosine_similarity(fv, db_fv)
-        if sim >= threshold:
-            return entry["user_id"], sim
+        if sim > best_sim:#This was added to find the best fe match
+            best_sim = sim
+            best_uid = entry["user_id"]
+    if best_sim >= threshold:
+        return best_uid, best_sim
     return None, 0.0
 
 # === Manual LBP Feature Extraction ===
