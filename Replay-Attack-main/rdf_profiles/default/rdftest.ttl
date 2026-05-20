@@ -1,0 +1,50 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://ncat.edu/custom/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rdftest.test> a foaf:Person ;
+    ns1:accuracy 5.846696e-02 ;
+    ns1:reliability 1.626434e-01 ;
+    ns1:speed 7.45804e-01 ;
+    ns1:tasks "B",
+        "E",
+        "H",
+        "I" ;
+    foaf:knows <http://chris.test/webid.ttl>,
+        <http://del.test/webid.ttl>,
+        <http://delete.test/webid.ttl>,
+        <http://delete2.test/webid.ttl>,
+        <http://isaiahfr.test/webid.ttl>,
+        <http://mom.test/webid.ttl>,
+        <http://rdftest2.test/webid.ttl>,
+        <http://rdfupdate.test/webid.ttl>,
+        <http://timbo.test/webid.ttl> ;
+    foaf:name "rdftest" .
+
+<http://chris.test/webid.ttl> a foaf:Person ;
+    foaf:name "Chris" .
+
+<http://del.test/webid.ttl> a foaf:Person ;
+    foaf:name "del" .
+
+<http://delete.test/webid.ttl> a foaf:Person ;
+    foaf:name "delete" .
+
+<http://delete2.test/webid.ttl> a foaf:Person ;
+    foaf:name "delete2" .
+
+<http://isaiahfr.test/webid.ttl> a foaf:Person ;
+    foaf:name "isaiahfr" .
+
+<http://mom.test/webid.ttl> a foaf:Person ;
+    foaf:name "Mom" .
+
+<http://rdftest2.test/webid.ttl> a foaf:Person ;
+    foaf:name "rdftest2" .
+
+<http://rdfupdate.test/webid.ttl> a foaf:Person ;
+    foaf:name "rdfupdate" .
+
+<http://timbo.test/webid.ttl> a foaf:Person ;
+    foaf:name "Timbo" .
+
