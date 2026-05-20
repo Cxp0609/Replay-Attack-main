@@ -105,36 +105,24 @@ def main():
     print(f"🖼 Saved captured face image to {filename}")
 
     # AUTO GENERATE RDF WEBID PROFILE FOR NEW USER
+    # Generate attributes matching network4.py decorate_nodes() pattern
+    np.random.seed()  # Override fixed seed from RDF.py for unique values per enrollment
+    accuracy, speed, reliability = np.random.uniform(size=3)
+    x = np.random.randint(2, 6)  # 2-5 random tasks
+    tasks = list(np.random.choice(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'], size=x, replace=False))
+    
     user_profile = WebidData(
         name=user_id,
-        accuracy=round(np.random.uniform(0.7, 1.0), 3),
-        speed=round(np.random.uniform(0.6, 0.95), 3),
-        reliability=round(np.random.uniform(0.75, 0.98), 3),
-        tasks=np.random.choice(['A', 'B', 'C', 'D', 'E', 'F'], size=3, replace=False).tolist(),
+        accuracy=accuracy,
+        speed=speed,
+        reliability=reliability,
+        tasks=tasks,
         friends=[]
     )
     
-    rdf_output_path = os.path.join(RDF_STORE_DIR, f"{user_id}.ttl")
-    make_rdf_for(user_profile, folder_name=os.path.dirname(rdf_output_path), write_to_file=False, print_to_screen=False)
-    
-    # Correctly serialize RDF to the profile file
-    FOAF = Namespace("http://xmlns.com/foaf/0.1/")
-    CUSTOM_NS = Namespace("http://ncat.edu/custom/")
-    
-    rdf_graph = Graph()
-    base_uri = f"http://{user_id.lower()}.test"
-    p = URIRef(base_uri)
-    
-    rdf_graph.add((p, RDF.type, FOAF.Person))
-    rdf_graph.add((p, FOAF.name, Literal(user_profile.name)))
-    rdf_graph.add((p, CUSTOM_NS.speed, Literal(user_profile.speed)))
-    rdf_graph.add((p, CUSTOM_NS.accuracy, Literal(user_profile.accuracy)))
-    rdf_graph.add((p, CUSTOM_NS.reliability, Literal(user_profile.reliability)))
-    
-    for task in user_profile.tasks:
-        rdf_graph.add((p, CUSTOM_NS.tasks, Literal(task)))
-    
-    rdf_graph.serialize(destination=rdf_output_path, format='ttl')
+    # Generate RDF WebID profile using shared make_rdf_for (matching network4.py pattern)
+    make_rdf_for(user_profile, folder_name=RDF_STORE_DIR, write_to_file=True, print_to_screen=False)
+    rdf_output_path = os.path.join(RDF_STORE_DIR, f"{user_profile.name.zfill(2)}.ttl")
     print(f"🔐 Generated RDF WebID profile: {rdf_output_path}")
 
 if __name__ == "__main__":
