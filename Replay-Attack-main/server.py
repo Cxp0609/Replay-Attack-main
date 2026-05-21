@@ -10,6 +10,7 @@ from rdflib import Graph, Namespace, RDF, URIRef, Literal
 from RDF import WebidData, make_rdf_for, read_in_a_network
 
 DB_FILE = "db.json"
+NETWORKS_FILE = "networks.json"
 RECEIVED_DIR = "received_vectors"
 RDF_STORE_DIR = "rdf_profiles"
 SERVER_IP = "0.0.0.0"
@@ -25,6 +26,25 @@ def cosine_similarity(vec1, vec2):
     if np.linalg.norm(a) == 0 or np.linalg.norm(b) == 0:
         return 0.0
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+# === Load Networks Registry ===
+def load_networks():
+    """Load networks.json to find which network a user belongs to."""
+    if os.path.exists(NETWORKS_FILE):
+        with open(NETWORKS_FILE, "r") as f:
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                print("❌ networks.json format error")
+    return {"default": []}
+
+def find_user_network(matched_user):
+    """Find which network a user belongs to by searching networks.json."""
+    networks = load_networks()
+    for net, members in networks.items():
+        if matched_user in members:
+            return net
+    return "default"
 
 # === Load DB ===
 def load_db():
@@ -130,15 +150,18 @@ def handle_client(conn, addr):
         # RDF INTEGRATION: Only send RDF profile if authenticated successfully
         if final_decision == "granted":
             matched_user = next(r["matched_user"] for r in results if r["status"] == "granted")
-            rdf_path = os.path.join(RDF_STORE_DIR, f"{matched_user}.ttl")
+            
+            # Look up which network the user belongs to (RDF profiles are stored in network subfolders)
+            user_network = find_user_network(matched_user)
+            rdf_path = os.path.join(RDF_STORE_DIR, user_network, f"{matched_user}.ttl")
             
             if os.path.exists(rdf_path):
                 with open(rdf_path, "r") as f:
                     response["rdf_profile"] = f.read()
-                print(f"🔓 Sending RDF profile for authenticated user: {matched_user}")
+                print(f"🔓 Sending RDF profile for authenticated user: {matched_user} (network: {user_network})")
             else:
                 response["rdf_profile"] = None
-                print(f"ℹ️ Authenticated user {matched_user} has no RDF profile yet")
+                print(f"ℹ️ Authenticated user {matched_user} has no RDF profile yet (looked in {user_network})")
 
         conn.sendall(json.dumps(response).encode())
         print(f"✅ Response sent: {response}")
