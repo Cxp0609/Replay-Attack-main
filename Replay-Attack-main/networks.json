@@ -9,7 +9,8 @@
     "delete",
     "delete2",
     "del",
-    "rdfupdate"
+    "rdfupdate",
+    "elted"
   ],
   "001": [
     "choice",

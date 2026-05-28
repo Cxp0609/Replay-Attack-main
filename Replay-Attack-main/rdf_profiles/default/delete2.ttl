@@ -3,16 +3,18 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://delete2.test> a foaf:Person ;
-    ns1:accuracy 4.818323e-01 ;
-    ns1:reliability 5.53e-01 ;
-    ns1:speed 2.576538e-01 ;
+    ns1:accuracy 8.898981e-02 ;
+    ns1:reliability 6.016238e-01 ;
+    ns1:speed 8.13023e-01 ;
     ns1:tasks "A",
-        "C",
-        "D",
+        "E",
+        "G",
+        "H",
         "I" ;
     foaf:knows <http://chris.test/webid.ttl>,
         <http://del.test/webid.ttl>,
         <http://delete.test/webid.ttl>,
+        <http://elted.test/webid.ttl>,
         <http://isaiahfr.test/webid.ttl>,
         <http://mom.test/webid.ttl>,
         <http://rdftest.test/webid.ttl>,
@@ -29,6 +31,9 @@
 
 <http://delete.test/webid.ttl> a foaf:Person ;
     foaf:name "delete" .
+
+<http://elted.test/webid.ttl> a foaf:Person ;
+    foaf:name "elted" .
 
 <http://isaiahfr.test/webid.ttl> a foaf:Person ;
     foaf:name "isaiahfr" .
