@@ -20,9 +20,11 @@ def detect_and_save(frame):
         print("⚠️ No face detected.")
         return False
 
-    # Save the image
-    cv2.imwrite(IMAGE_OUT, frame)
-    print(f"📸 Saved image as {IMAGE_OUT}")
+    # Crop to the first detected face and save
+    x, y, w, h = faces[0]
+    face_crop = frame[y:y+h, x:x+w]
+    cv2.imwrite(IMAGE_OUT, face_crop)
+    print(f"📸 Saved cropped face as {IMAGE_OUT}")
 
     # Save coordinates
     with open(COORD_OUT, "w") as f:

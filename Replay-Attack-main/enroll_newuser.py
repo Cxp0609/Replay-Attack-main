@@ -3,7 +3,7 @@ import os
 import json
 import time
 import numpy as np
-from feature_extractor import extract_feature_vector
+from feature_extractor import extract_feature_vector, load_feature_extractors
 
 # RDF Integration
 from rdflib import Graph, Namespace, RDF, URIRef, Literal
@@ -14,7 +14,6 @@ CAPTURED_DIR = "captured_images"
 LOCAL_DB = "db.json"
 RDF_STORE_DIR = "rdf_profiles"
 NETWORKS_FILE = "networks.json"
-FE_INDEX = 0  # Patch-based feature extractor index (0-29)
 
 os.makedirs(CAPTURED_DIR, exist_ok=True)
 os.makedirs(RDF_STORE_DIR, exist_ok=True)
@@ -208,9 +207,25 @@ def main():
     # For simplicity, let's assume entire gray image is face
     face = gray
 
-    fv = extract_feature_vector(face, fe_index=FE_INDEX)
-    if not fv:
-        print("❌ Failed to extract feature vector.")
+    # === Extract feature vectors for ALL available disposable FEs ===
+    fes = load_feature_extractors()
+    if not fes:
+        print("❌ No feature extractors loaded.")
+        return
+
+    all_feature_vectors = {}
+    lbp_vector = None
+
+    for fe_index in range(len(fes)):
+        fv = extract_feature_vector(face, fe_index=fe_index)
+        if fv:
+            all_feature_vectors[str(fe_index)] = fv
+            print(f"  ✅ Extracted feature vector for FE {fe_index} (dim={len(fv)})")
+        else:
+            print(f"  ❌ Failed to extract feature vector for FE {fe_index}")
+
+    if not all_feature_vectors:
+        print("❌ Failed to extract any feature vectors.")
         return
 
     db = load_local_db()
@@ -218,17 +233,20 @@ def main():
     updated = False
     for entry in db:
         if entry.get("user_id") == user_id:
-            entry["feature_vector"] = fv
+            entry["feature_vectors"] = all_feature_vectors
+            # Keep backward compatibility with single feature_vector field
+            entry["feature_vector"] = all_feature_vectors.get("0", [])
             updated = True
-            print(f"🔄 Updated feature vector for user {user_id}.")
+            print(f"🔄 Updated feature vectors for user {user_id} ({len(all_feature_vectors)} FEs).")
             break
 
     if not updated:
         db.append({
             "user_id": user_id,
-            "feature_vector": fv
+            "feature_vector": all_feature_vectors.get("0", []),
+            "feature_vectors": all_feature_vectors
         })
-        print(f"➕ Added new user {user_id} to database.")
+        print(f"➕ Added new user {user_id} to database with {len(all_feature_vectors)} FE vectors.")
 
     save_local_db(db)
 

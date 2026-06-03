@@ -1,0 +1,13 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://ncat.edu/custom/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://sharon.test> a foaf:Person ;
+    ns1:accuracy 6.994391e-01 ;
+    ns1:reliability 2.056387e-01 ;
+    ns1:speed 9.946541e-01 ;
+    ns1:tasks "C",
+        "H",
+        "I" ;
+    foaf:name "Sharon" .
+

@@ -3,15 +3,24 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://choice.test> a foaf:Person ;
-    ns1:accuracy 6.323722e-01 ;
-    ns1:reliability 1.238889e-01 ;
-    ns1:speed 1.905874e-01 ;
+    ns1:accuracy 2.510906e-01 ;
+    ns1:reliability 3.993875e-01 ;
+    ns1:speed 7.602485e-01 ;
     ns1:tasks "A",
-        "C",
-        "D",
-        "F" ;
-    foaf:knows <http://cd.test/webid.ttl> ;
+        "E",
+        "F",
+        "H",
+        "I" ;
+    foaf:knows <http://aprayer.test/webid.ttl>,
+        <http://baldy.test/webid.ttl>,
+        <http://cd.test/webid.ttl> ;
     foaf:name "choice" .
+
+<http://aprayer.test/webid.ttl> a foaf:Person ;
+    foaf:name "aprayer" .
+
+<http://baldy.test/webid.ttl> a foaf:Person ;
+    foaf:name "baldy" .
 
 <http://cd.test/webid.ttl> a foaf:Person ;
     foaf:name "cd" .
