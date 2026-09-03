@@ -327,7 +327,7 @@ python generate_trust_distribution_graph.py   # Specific 30-node / p=0.3 analysi
 
 4. **`Replay _ simulator.py` (with space)** is a duplicate of `Replay_simulator.py` (no space). Both exist in the repo.
 
-5. **`generate_trust_distribution_graph.py`** uses hardcoded display statistics (min=0.12, max=0.89, mean=0.505, std=0.18) in the graph labels instead of the actual computed values — the graph is illustrative, not precise.
+5. **`generate_trust_distribution_graph.py`**  the graph is illustrative, not precise.
 
 6. **No token replay protection** — `used_tokens.json` is not consulted by `server.py` during authentication.
 
