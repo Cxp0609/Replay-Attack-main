@@ -10,181 +10,181 @@
       "fe_index": 0,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9483
+      "similarity": 0.9303
     },
     {
       "fe_index": 1,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9497
+      "similarity": 0.9508
     },
     {
       "fe_index": 2,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9452
+      "similarity": 0.8855
     },
     {
       "fe_index": 3,
       "status": "granted",
-      "matched_user": "Sharon",
-      "similarity": 0.9679
+      "matched_user": "aprayer",
+      "similarity": 0.9642
     },
     {
       "fe_index": 4,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9812
+      "similarity": 0.9802
     },
     {
       "fe_index": 5,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9386
+      "similarity": 0.9476
     },
     {
       "fe_index": 6,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9767
+      "similarity": 0.9793
     },
     {
       "fe_index": 7,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.942
+      "similarity": 0.9401
     },
     {
       "fe_index": 8,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9252
+      "similarity": 0.9286
     },
     {
       "fe_index": 9,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9683
+      "similarity": 0.9558
     },
     {
       "fe_index": 10,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9728
+      "similarity": 0.9731
     },
     {
       "fe_index": 11,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9621
+      "similarity": 0.9776
     },
     {
       "fe_index": 12,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9203
+      "similarity": 0.954
     },
     {
       "fe_index": 13,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9713
+      "similarity": 0.9799
     },
     {
       "fe_index": 14,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9497
+      "similarity": 0.9684
     },
     {
       "fe_index": 15,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9467
+      "similarity": 0.9361
     },
     {
       "fe_index": 16,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9028
+      "similarity": 0.8822
     },
     {
       "fe_index": 17,
-      "status": "granted",
-      "matched_user": "Sharon",
-      "similarity": 0.8672
+      "status": "denied",
+      "matched_user": "unknown",
+      "similarity": 0.0
     },
     {
       "fe_index": 18,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.8918
+      "similarity": 0.9137
     },
     {
       "fe_index": 19,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9595
+      "similarity": 0.9616
     },
     {
       "fe_index": 20,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9412
+      "similarity": 0.8957
     },
     {
       "fe_index": 21,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9617
+      "similarity": 0.946
     },
     {
       "fe_index": 22,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9693
+      "similarity": 0.9588
     },
     {
       "fe_index": 23,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9358
+      "similarity": 0.9505
     },
     {
       "fe_index": 24,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9442
+      "similarity": 0.9435
     },
     {
       "fe_index": 25,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9655
+      "similarity": 0.9491
     },
     {
       "fe_index": 26,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.8938
+      "similarity": 0.9115
     },
     {
       "fe_index": 27,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.9578
+      "similarity": 0.9445
     },
     {
       "fe_index": 28,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.95
+      "similarity": 0.9411
     },
     {
       "fe_index": 29,
       "status": "granted",
       "matched_user": "Sharon",
-      "similarity": 0.972
+      "similarity": 0.9733
     }
   ],
   "final_decision": "granted",
