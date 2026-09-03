@@ -335,10 +335,3 @@ python generate_trust_distribution_graph.py   # Specific 30-node / p=0.3 analysi
 
 8. **Enrollment captures the entire frame** as the face (`face = gray`) rather than cropping to the detected face, which may reduce matching accuracy.
 
----
-
-## License & Credits
-
-- Feature extraction patch-coordinate evolution: GA from `disposable FEs.txt`
-- Trust network RDF methodology based on a Google Colab notebook by Dr. Albert Esterline (NC A&T), adapted by Chris Paradis.
-- Face recognition: OpenCV Haar cascades + custom patch-based FEs + cosine similarity.
